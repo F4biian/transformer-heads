@@ -27,7 +27,8 @@ from transformers.generation.stopping_criteria import (
     StoppingCriteriaList,
     validate_stopping_criteria,
 )
-from transformers.generation.utils import NEED_SETUP_CACHE_CLASSES_MAPPING, logger
+from transformers.generation.utils import logger
+NEED_SETUP_CACHE_CLASSES_MAPPING = []
 from transformers.modeling_outputs import BaseModelOutputWithPast
 
 from transformer_heads.config import HeadConfig, create_headed_model_config

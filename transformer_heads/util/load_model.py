@@ -139,6 +139,7 @@ def load_headed(
 def load_lora_with_heads(
     base_model_class: Type[PreTrainedModel],
     path: str,
+    new_emb_size = None,
     quantization_config: BitsAndBytesConfig = None,
     only_inference: bool = False,
     fully_trained_heads: bool = True,
@@ -190,6 +191,9 @@ def load_lora_with_heads(
     )
 
     hf_logger.setLevel(before_level)
+        
+    if new_emb_size is not None:
+        model.resize_token_embeddings(new_emb_size)
 
     model.load_adapter(path, device_map=device_map)
     head: MLPHead
